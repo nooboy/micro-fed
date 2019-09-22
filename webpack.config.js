@@ -17,13 +17,6 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
-  resolve: {
-    extensions: ['.js', '.vue', '.json'],
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('app3/src')
-    }
-  },
   module: {
     rules: [
       {
@@ -44,8 +37,11 @@ module.exports = {
     fs: 'empty'
   },
   resolve: {
+    extensions: ['.js', '.vue', '.json'],
     alias: {
-      vue: 'vue/dist/vue.js'
+      vue: 'vue/dist/vue.js',
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('app3/src')
     },
     modules: [path.resolve(__dirname, 'node_modules')],
   },

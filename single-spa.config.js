@@ -14,8 +14,8 @@ registerApplication(
 
 registerApplication(
   'app3',
-  // () => import('./app3/src/singleSpaEntry.js'),
-  () => import('./app3/release/singleSpaEntry.js'),
+  () => import('./app3/src/singleSpaEntry.js'),
+  // () => import('./app3/release/singleSpaEntry.js'),
   pathPrefix('app3')
 );
 
@@ -23,6 +23,6 @@ start();
 
 function pathPrefix(prefix) {
   return function(location) {
-      return location.pathname.indexOf(`${prefix}`) === 0;
+      return location.pathname.indexOf(`${prefix}`) === 1;
   }
 }
