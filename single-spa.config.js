@@ -1,15 +1,28 @@
 import { registerApplication, start } from 'single-spa'
 
 registerApplication(
-  'test1', 
-  () => import('./src/test1/main.js'),
-  () => /test1/.test(location.pathname) || location.pathname === '/'
+  'app1', 
+  () => import('./app1/main.js'),
+  pathPrefix('app1')
 );
 
 registerApplication(
-  'test2',
-  () => import('./src/test2/main.js'),
-  () => /test2/.test(location.pathname)
+  'app2',
+  () => import('./app2/main.js'),
+  pathPrefix('app2')
+);
+
+registerApplication(
+  'app3',
+  // () => import('./app3/src/singleSpaEntry.js'),
+  () => import('./app3/release/singleSpaEntry.js'),
+  pathPrefix('app3')
 );
 
 start();
+
+function pathPrefix(prefix) {
+  return function(location) {
+      return location.pathname.indexOf(`${prefix}`) === 0;
+  }
+}

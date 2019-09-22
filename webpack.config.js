@@ -3,6 +3,10 @@ const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
 module.exports = {
   mode: 'development',
   entry: {
@@ -12,6 +16,13 @@ module.exports = {
     publicPath: '/dist/',
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
+  },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': resolve('app3/src')
+    }
   },
   module: {
     rules: [
@@ -45,6 +56,19 @@ module.exports = {
   devtool: 'source-map',
   externals: [],
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+		// contentBase: './relase',
+    watchOptions: { aggregateTimeout: 300, poll: 1000 },
+    headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    },
+    // proxy: {
+    //     "/app3": {
+    //         target: "http://localhost:8088",
+    //         pathRewrite: {"^/app3" : ""}
+    //     }
+    // }
   }
 };

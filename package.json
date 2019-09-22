@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "微前端",
   "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --open",
+    "build": "webpack --config webpack.config.js -p"
+  },
   "dependencies": {
     "single-spa": "^4.4.1",
     "single-spa-vue": "^1.5.4",
@@ -24,10 +28,6 @@
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1"
-  },
-  "scripts": {
-    "start": "webpack-dev-server --open",
-    "build": "webpack --config webpack.config.js -p"
   },
   "repository": {
     "type": "git",
