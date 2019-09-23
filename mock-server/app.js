@@ -26,4 +26,4 @@ app.use(express.static(__dirname + "" , {index:"index.html"}));
 // app.use("/app2", proxyMiddleWare(proxyOption2));
 
 // 哒哒哒
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(3000, () => console.log('运行 2333 端口!'))
