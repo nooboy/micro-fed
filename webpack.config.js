@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+  return path.join(__dirname, '.', dir)
 }
 
 module.exports = {
@@ -26,6 +26,10 @@ module.exports = {
         test: /\.js$/,
         exclude: [path.resolve(__dirname, 'node_modules')],
         loader: 'babel-loader',
+      },
+      {
+          test: /\.(png|jpg|gif|svg)$/,
+          loader: 'file-loader',
       },
       {
         test: /\.vue$/,
@@ -60,11 +64,11 @@ module.exports = {
         "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
         "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
     },
-    // proxy: {
-    //     "/app3": {
-    //         target: "http://localhost:8088",
-    //         pathRewrite: {"^/app3" : ""}
-    //     }
-    // }
+    proxy: {
+        "/app3": {
+            target: "http://localhost:8088",
+            pathRewrite: {"^/app3" : ""}
+        }
+    }
   }
 };
